@@ -1,0 +1,29 @@
+.venv\Scripts\activate
+
+
+
+call :tryRunPy
+if errorlevel 1 (
+    call :tryRunPython
+    if errorlevel 1 (
+        goto :end
+    )
+)
+echo.
+goto :end
+
+:tryRunPy
+py -m venv AutoLoginProject\.venv
+if errorlevel 1 (
+    exit /b 1
+)
+exit /b 0
+
+:tryRunPython
+python -m venv AutoLoginProject\.venv
+if errorlevel 1 (
+    exit /b 1
+)
+exit /b 0
+
+:end
